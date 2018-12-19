@@ -177,7 +177,7 @@ export default {
     },
     addObject: function () {
       this.errorMessage = ''
-      axios.post(process.env.API_URL + '/api/organization/', this.newObject)
+      axios.post(process.env.API_URL + '/api/edit/organization/', this.newObject)
         .then(resp => {
           this.loading = false
           this.addDialog = false
@@ -197,7 +197,7 @@ export default {
     updateObject: function () {
       this.errorMessage = ''
       if (this.currentPeople !== '') {
-        axios.put(process.env.API_URL + '/api/organization/' + this.currentObject.id + '/', this.currentObject)
+        axios.put(process.env.API_URL + '/api/edit/organization/' + this.currentObject.id + '/', this.currentObject)
           .then(resp => {
             this.loading = false
             this.currentObject = resp.data
@@ -220,7 +220,7 @@ export default {
     deleteObject: function () {
       this.deleteDialog = false
       if (this.currentObject !== '') {
-        axios.delete(process.env.API_URL + '/api/organization/' + this.currentObject.id + '/')
+        axios.delete(process.env.API_URL + '/api/edit/organization/' + this.currentObject.id + '/')
           .then(resp => {
             this.currentObject = ''
             this.isSelected = false
