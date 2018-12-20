@@ -3,10 +3,10 @@
     <h1>{{'List of Users' | translate}}</h1>
     <div class="btn-toolbar justify-content-between mb-3">
       <div>
-        <button class="btn btn-success" v-on:click="addDialog = true">{{'Add' | translate}}</button>
-        <button class="btn btn-success"  v-if="isSelected" v-on:click="goUserDetails()">{{'Details' | translate}}</button>
-        <button class="btn btn-success" v-if="isSelected" v-on:click="editDialog = true">{{'Edit' | translate}}</button>
-        <button class="btn btn-danger" v-if="isSelected" v-on:click="deleteDialog = true">{{'Delete' | translate}}</button>
+        <button class="btn btn-success" v-roles="['admin_role', 'edit_role']" v-on:click="addDialog = true">{{'Add' | translate}}</button>
+        <button class="btn btn-success"  v-roles="['admin_role', 'edit_role']" v-if="isSelected" v-on:click="goUserDetails()">{{'Details' | translate}}</button>
+        <button class="btn btn-success" v-roles="['admin_role', 'edit_role']" v-if="isSelected" v-on:click="editDialog = true">{{'Edit' | translate}}</button>
+        <button class="btn btn-danger" v-roles="['admin_role', 'edit_role']" v-if="isSelected" v-on:click="deleteDialog = true">{{'Delete' | translate}}</button>
       </div>
       <div class="input-group">
         <input class="form-control mr-sm-2" type="text" placeholder="Search" v-model="search_term" aria-label="Search">
@@ -230,7 +230,7 @@ export default {
         })
         .catch(err => {
           console.log(err)
-          if (err.response.data) {
+          if (err.response && err.response.data) {
             var errors = err.response.data
             for (var value in errors) {
               this.errorMessage = errors[value][0]
@@ -251,7 +251,7 @@ export default {
           })
           .catch(err => {
             console.log(err)
-            if (err.response.data) {
+            if (err.response && err.response.data) {
               var errors = err.response.data
               for (var value in errors) {
                 this.errorMessage = errors[value][0]
