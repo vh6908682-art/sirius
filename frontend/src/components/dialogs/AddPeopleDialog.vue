@@ -39,7 +39,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="gray darken-1" @click.native="close">{{'Close' | translate}}</v-btn>
-          <v-btn color="green darken-1" @click.native="clicked()">{{'Save' | translate}}</v-btn>
+          <v-btn color="green darken-1" @click="clicked()">{{'Save' | translate}}</v-btn>
         </v-card-actions>
       </v-form>
     </v-card>
@@ -52,23 +52,7 @@ export default {
   name: 'AddPeopleDialog',
   methods: {
     clicked () {
-      this.errorMessage = ''
-      try {
-        this.onClicked()
-      } catch (err) {
-        console.log(err)
-        if (err.response && err.response.data) {
-          var errors = err.response.data
-          for (var value in errors) {
-            if (value instanceof Array) {
-              this.errorMessage = errors[value][0]
-            } else {
-              this.errorMessage = errors[value]
-            }
-          }
-          console.log(err.response.data)
-        }
-      }
+      this.onClicked()
     },
     close () {
       this.$emit('update:dialog', false)
