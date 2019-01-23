@@ -1,6 +1,6 @@
 <template>
   <Menu>
-    <DirectoryDetail :object="data.currentObject" :title="this.$t('Edit city')" :errorMessage="data.errorMessage" :on-clicked="editObject" :names="names" @onSelect_region="selectRegion"/>
+    <DirectoryDetail :object="data.currentObject" :title="this.$t('Edit city')" :errorMessage="data.errorMessage" :on-clicked="editObject" :names="names" :onSelect="onSelect"/>
   </Menu>
 </template>
 
@@ -24,6 +24,10 @@ export default {
       }
     }
   },
+  mounted: function () {
+    this.data.currentObject.id = this.$route.params.id
+    this.getObject()
+  },
   methods: {
     getObject: function () {
       onGetSingle('/api/city/', 'currentObject', this.data)
@@ -31,8 +35,10 @@ export default {
     editObject: function () {
       onPutSingle('/api/city/', this.data, this.getObject)
     },
-    selectRegion: function (event) {
-      this.data.currentObject.region = event
+    onSelect: function (event) {
+      if (event.name === 'region') {
+        this.data.currentObject.region = event.id
+      }
     }
   },
   components: {

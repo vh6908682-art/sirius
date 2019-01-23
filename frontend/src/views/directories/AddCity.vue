@@ -1,6 +1,6 @@
 <template>
   <Menu>
-    <DirectoryDetail :object="data.currentObject" :title="this.$t('Add city')" :errorMessage="data.errorMessage" :on-clicked="addObject" :names="names" @onSelect_region="selectRegion"/>
+    <DirectoryDetail :object="data.currentObject" :title="this.$t('Add city')" :errorMessage="data.errorMessage" :on-clicked="addObject" :names="names" :onSelect="onSelect"/>
   </Menu>
 </template>
 
@@ -31,9 +31,10 @@ export default {
     addObject: function () {
       onPostSingle('/api/city/', this.data, this.getObject)
     },
-    selectRegion: function (event) {
-      console.log('from addCity ' + JSON.stringify(event))
-      this.data.currentObject.region = event
+    onSelect: function (event) {
+      if (event.name === 'region') {
+        this.data.currentObject.region = event.id
+      }
     }
   },
   components: {
