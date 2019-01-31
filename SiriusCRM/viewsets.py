@@ -1,5 +1,4 @@
 from django.core.paginator import InvalidPage
-from django.http import JsonResponse, HttpResponseBadRequest
 from django.utils import six
 from rest_framework import viewsets, filters
 from rest_framework.exceptions import NotFound
@@ -7,11 +6,10 @@ from rest_framework.generics import get_object_or_404
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework.utils import json
 
 from SiriusCRM.mixins import HasRoleMixin, CountModelMixin
 from SiriusCRM.models import User, Organization, Unit, Position, Category, Country, Region, City, Competency, Course, \
-    Payment, Address, UserPosition
+    Payment, Address, UserCategory
 from SiriusCRM.serializers import UserSerializer, UserDetailSerializer, OrganizationSerializer, UnitSerializer, \
     PositionSerializer, CategorySerializer, CountrySerializer, RegionSerializer, CitySerializer, \
     CompetencySerializer, CourseSerializer, PaymentSerializer, AddressSerializer, UserPositionSerializer
@@ -68,6 +66,40 @@ class UserViewSet(HasRoleMixin, CountModelMixin, viewsets.ModelViewSet):
     pagination_class = StandardResultsSetPagination
     search_fields = ('first_name', 'last_name', 'email')
     ordering_fields = ('id', 'first_name', 'last_name', 'email')
+
+
+class EmployeeViewSet(HasRoleMixin, CountModelMixin, viewsets.ModelViewSet):
+    permission_classes = (IsAuthenticated,)
+    allowed_get_roles = ['admin_role', 'user_role', 'user_list_role']
+    allowed_post_roles = ['admin_role', 'user_role', 'user_list_role']
+    allowed_put_roles = ['admin_role', 'user_role', 'user_list_role']
+    allowed_delete_roles = ['admin_role', 'user_role', 'user_list_role']
+    queryset = User.objects.filter(categories__in=[Category.EMPLOYEE])
+    serializer_class = UserSerializer
+    filter_backends = (filters.SearchFilter, filters.OrderingFilter,)
+    pagination_class = StandardResultsSetPagination
+    search_fields = ('first_name', 'last_name', 'email')
+    ordering_fields = ('id', 'first_name', 'last_name', 'email')
+
+    def perform_create(self, serializer):
+        UserCategory.objects.create(user=serializer.save(), category=get_object_or_404(Category, pk=Category.EMPLOYEE))
+
+
+class DiscipleViewSet(HasRoleMixin, CountModelMixin, viewsets.ModelViewSet):
+    permission_classes = (IsAuthenticated,)
+    allowed_get_roles = ['admin_role', 'user_role', 'user_list_role']
+    allowed_post_roles = ['admin_role', 'user_role', 'user_list_role']
+    allowed_put_roles = ['admin_role', 'user_role', 'user_list_role']
+    allowed_delete_roles = ['admin_role', 'user_role', 'user_list_role']
+    queryset = User.objects.filter(categories__in=[Category.DISCIPLE])
+    serializer_class = UserSerializer
+    filter_backends = (filters.SearchFilter, filters.OrderingFilter,)
+    pagination_class = StandardResultsSetPagination
+    search_fields = ('first_name', 'last_name', 'email')
+    ordering_fields = ('id', 'first_name', 'last_name', 'email')
+
+    def perform_create(self, serializer):
+        UserCategory.objects.create(user=serializer.save(), category=get_object_or_404(Category, pk=Category.DISCIPLE))
 
 
 class UserDetailViewSet(HasRoleMixin, viewsets.ModelViewSet):
