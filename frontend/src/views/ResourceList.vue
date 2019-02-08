@@ -1,6 +1,6 @@
 <template>
   <Menu>
-    <DataForm :resource="resource"></DataForm>
+    <DataForm :resource="resource" action="list"></DataForm>
   </Menu>
 </template>
 
