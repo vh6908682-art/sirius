@@ -23,7 +23,7 @@
 import { onGet } from '../api/requests'
 
 export default {
-  name: 'SelectField',
+  name: 'MultiSelectField',
   props: {
     value: {},
     field: {}
