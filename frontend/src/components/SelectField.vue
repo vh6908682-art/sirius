@@ -4,11 +4,12 @@
     :label="$t(field.text) + (field.required?' *':'')"
     :error-messages="errorMessage[field.value]"
     chips
+    deletable-chips
     :maxlength="field.maxlength"
     v-model="object[field.value]"
     :items="data.objects"
     :item-text="field.item_text"
-    item-value="id"
+    :item-value="field.item_value"
     :search-input.sync="search_term"
     :loading="data.loading"
     append-icon="edit"
