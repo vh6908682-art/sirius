@@ -54,24 +54,6 @@
     {
       "type": "tree",
       "name": "tree1",
-      "headers": [
-        {
-          "text": "#",
-          "value": "id"
-        },
-        {
-          "text": "Name",
-          "value": "name"
-        }
-      ],
-      "names": [
-        {
-          "name": "id"
-        },
-        {
-          "name": "name"
-        }
-      ],
       "api": "/api/unit/"
     }
   ]
