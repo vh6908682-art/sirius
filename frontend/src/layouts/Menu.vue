@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-      <router-link class="navbar-brand" active-class="active" to="/siriuscrm">{{'Sirius' | translate}}</router-link>
+      <router-link class="navbar-brand" active-class="active" to="/crm">{{'Sirius' | translate}}</router-link>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
               aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -22,7 +22,7 @@
         </div>
         <div class="navbar-nav ml-auto d-lg-flex align-items-center">
           <div class="nav-item">
-            <a class="nav-link" style="cursor: pointer;" @click="logout"><font-awesome-icon icon="user"/>{{'Logout' | translate}}</a>
+            <a class="nav-link" style="cursor: pointer;" @click="logout"><v-icon small color="grey">person</v-icon>{{'Logout' | translate}}</a>
           </div>
         </div>
       </div>
