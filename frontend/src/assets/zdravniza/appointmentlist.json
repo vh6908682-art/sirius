@@ -5,7 +5,6 @@
   "type": "list",
   "title": "List of appointments",
   "name": "appointment",
-  "style": "max-width: 768px;",
   "fields": [
     {
       "type": "group",
@@ -92,13 +91,13 @@
           "name": "time"
         },
         {
-          "name": "status"
+          "name": "status_value.name"
         },
         {
-          "name": "contact"
+          "name": "contact_value.email"
         },
         {
-          "name": "consultant"
+          "name": "consultant_value.email"
         }
       ],
       "pagination": true,
