@@ -43,7 +43,7 @@
       "name": "add_text5",
       "text": "Mobile",
       "value": "mobile",
-      "maxlength": 80,
+      "maxlength": 20,
       "required": true
     },
     {
