@@ -97,7 +97,7 @@
           "name": "contact_value.email"
         },
         {
-          "name": "consultant_value.email"
+          "name": "consultant_value.full_name"
         }
       ],
       "pagination": true,

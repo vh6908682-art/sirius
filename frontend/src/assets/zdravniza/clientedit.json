@@ -43,7 +43,7 @@
       "name": "edit_text5",
       "text": "Mobile",
       "value": "mobile",
-      "maxlength": 80,
+      "maxlength": 20,
       "required": true
     },
     {
@@ -52,7 +52,7 @@
       "text": "Comment",
       "value": "comments",
       "comment": "comment_value",
-      "api": "/api/comment/",
+      "api": "/api/zdravnizacomment/",
       "contact_api": "/api/contact/",
       "required": false
     },
