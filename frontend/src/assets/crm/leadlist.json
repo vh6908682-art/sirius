@@ -85,6 +85,10 @@
           "value": "status"
         },
         {
+          "text": "Source",
+          "value": "source"
+        },
+        {
           "text": "Consultant",
           "value": "consultant"
         }
@@ -110,6 +114,9 @@
         },
         {
           "name": "status_value.name"
+        },
+        {
+          "name": "source_value.name"
         },
         {
           "name": "consultant_value.full_name"
