@@ -89,6 +89,10 @@
           "value": "source"
         },
         {
+          "text": "Course",
+          "value": "course"
+        },
+        {
           "text": "Consultant",
           "value": "consultant"
         }
@@ -117,6 +121,9 @@
         },
         {
           "name": "source_value.name"
+        },
+        {
+          "name": "course_value.name"
         },
         {
           "name": "consultant_value.full_name"
