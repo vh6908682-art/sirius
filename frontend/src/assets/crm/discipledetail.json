@@ -37,7 +37,7 @@
       ]
     },
     {
-      "type": "datetime",
+      "type": "begindate",
       "name": "detail_date_joined",
       "text": "Date joined",
       "value": "date_joined",
@@ -121,6 +121,18 @@
           "required": false
         }
       ]
+    },
+    {
+      "type": "select",
+      "name": "detail_select_school_type",
+      "text": "School type",
+      "value": "school_type",
+      "item_text": "name",
+      "item_value": "id",
+      "api": "/api/schooltype/",
+      "resource": "schooltype",
+      "required": false,
+      "hide_edit": true
     },
     {
       "type": "multi-select-tree",
